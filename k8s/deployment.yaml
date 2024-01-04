@@ -18,15 +18,23 @@ spec:
       - name: goserver
         image: "tayssve/hello-go:v4"
 
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          periodSeconds: 3
+          failureThreshold: 1
+          initialDelaySeconds: 10
+
         livenessProbe:
           httpGet:
             path: /healthz
             port: 8000
-          initialDelaySeconds: 5
           periodSeconds: 5
           failureThreshold: 1
           timoutSeconds: 1
           successThreshold: 1
+          initialDelaySeconds: 15
 
         envFrom:
         - configMapRef:
@@ -37,7 +45,7 @@ spec:
         volumeMounts:
         - name: configmap-volume
           mountPath: /go/myfamily
-          
+
       volumes:
       - name: configmap-volume
         configMap:

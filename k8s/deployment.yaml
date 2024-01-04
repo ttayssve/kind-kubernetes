@@ -17,16 +17,27 @@ spec:
       containers:
       - name: goserver
         image: "tayssve/hello-go:v4"
+
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          failureThreshold: 1
+          timoutSeconds: 1
+          successThreshold: 1
+
         envFrom:
         - configMapRef:
             name: goserver-env
         - secretRef:
             name: goserver-secret
-            
+
         volumeMounts:
         - name: configmap-volume
           mountPath: /go/myfamily
-
+          
       volumes:
       - name: configmap-volume
         configMap:

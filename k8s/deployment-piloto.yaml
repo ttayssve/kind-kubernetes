@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flanco-piloto
+  labels:
+    app: flanco-piloto
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flanco-piloto
+  template:
+    metadata:
+      labels:
+        app: flanco-piloto
+    spec:
+      containers:
+      - name: flanco-piloto
+        image: tayssve/piloto:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"

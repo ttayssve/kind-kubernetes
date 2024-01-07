@@ -9,7 +9,7 @@ This repository is dedicated to studying and experimenting with Kubernetes using
 
 ## Installation
 1. **Install Kind**: Follow the instructions on the [Kind website](https://kind.sigs.k8s.io/docs/user/quick-start/) to install Kind.
-2. **Clone the Repository**: `git clone https://github.com/ttayssve/kind-kubernetes`
+2. **Clone the Repository**: `git clone https://github.com/ttayssve/kind-kubernetes.git`
 3. **Navigate to the Repository**:
 
 
